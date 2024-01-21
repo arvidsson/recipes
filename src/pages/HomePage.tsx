@@ -5,10 +5,15 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import Recipe from "../components/Recipe";
 
+type Ingredient = {
+  title: string;
+  amount: string;
+};
+
 type RecipeDoc = {
   id: string;
   title: string;
-  ingredients: string[];
+  ingredients: Ingredient[];
   steps: string[];
 };
 
