@@ -1,4 +1,5 @@
 import React from "react";
+import Timer from "./Timer";
 
 export type Ingredient = {
   title: string;
@@ -17,15 +18,15 @@ type RecipeProps = {
   steps: string[];
 };
 
-const replaceIngredients = (step: string, ingredients: Ingredient[]) => {
-  // Replace {index} with the corresponding ingredient
-  return step.replace(/\{(\d+)\}/g, (match, index) => {
-    const ingredientIndex = parseInt(index, 10) - 1;
-    return "(" + ingredients[ingredientIndex].amount + ")" || match;
-  });
-};
-
 const Recipe = ({ title, ingredients, steps }: RecipeProps) => {
+  const replaceIngredients = (step: string, ingredients: Ingredient[]) => {
+    // Replace {index} with the corresponding ingredient
+    return step.replace(/\{(\d+)\}/g, (match, index) => {
+      const ingredientIndex = parseInt(index, 10) - 1;
+      return "(" + ingredients[ingredientIndex].amount + ")" || match;
+    });
+  };
+
   return (
     <article className="prose">
       <h2>{title}</h2>
@@ -52,7 +53,10 @@ const Recipe = ({ title, ingredients, steps }: RecipeProps) => {
             </div>
             <div className="flex border-t border-r px-[2px]"> </div>
             <div className="flex border-t p-2 grow">
-              <div>{replaceIngredients(step, ingredients)}</div>
+              <div className="w-full">
+                {replaceIngredients(step, ingredients)}{" "}
+                <Timer defaultTime={1} onTimerComplete={() => {}} />
+              </div>
             </div>
           </div>
         ))}
