@@ -26,12 +26,11 @@ const Recipe = ({ title, ingredients, steps }: RecipeProps) => {
       <h3>Ingredienser</h3>
       <div className="mb-4 border-b">
         {ingredients.map((ingredient, index) => (
-          //<li key={index}>{ingredient.title}</li>
           <div key={index} className="flex flex-grow">
-            <div className="shrink-0 border-t border-r p-2 font-serif w-20 text-right">
+            <div className="shrink-0 border-t border-r p-2 w-20 text-right">
               <div className="font-bold">{ingredient.amount}</div>
             </div>
-            <div className="flex border-t border-r p-1"> </div>
+            <div className="flex border-t border-r px-[2px]"> </div>
             <div className="flex border-t p-2 grow">
               <div>{ingredient.title}</div>
             </div>
@@ -42,11 +41,10 @@ const Recipe = ({ title, ingredients, steps }: RecipeProps) => {
       <div className="mb-4 border-b">
         {steps.map((step, index) => (
           <div key={index} className="flex">
-            <div className="shrink-0 border-t border-r p-2 w-10 font-serif text-center">
-              {/* <div className="font-bold">{index + 1}</div> */}
+            <div className="shrink-0 border-t border-r p-2 w-10 text-center">
               <input type="checkbox" />
             </div>
-            <div className="flex border-t border-r p-1"> </div>
+            <div className="flex border-t border-r px-[2px]"> </div>
             <div className="flex border-t p-2 grow">
               <div>{replaceIngredients(step, ingredients)}</div>
             </div>

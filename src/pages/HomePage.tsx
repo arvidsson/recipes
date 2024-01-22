@@ -43,7 +43,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="m-8">
+    <div className=" p-8 max-w-2xl mx-auto">
       <div>
         {recipes.map((recipe, index) => (
           <Recipe key={index} {...recipe} />
