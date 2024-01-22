@@ -39,18 +39,20 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="px-8 py-2 max-w-2xl mx-auto">
-      <Link className="underline font-semibold" to="/create">
-        Create
-      </Link>
+    <div className="px-8 py-8 max-w-2xl mx-auto">
       <div className="mt-2">
         {recipes.map((recipe, index) => (
           <Recipe key={index} {...recipe} />
         ))}
       </div>
-      <button className="underline font-semibold" onClick={logOut}>
-        Logout
-      </button>
+      <div className="w-full flex justify-between mt-8">
+        <Link className="underline font-semibold" to="/create">
+          Lägg till recept
+        </Link>
+        <button className="underline font-semibold" onClick={logOut}>
+          Logga ut
+        </button>
+      </div>
     </div>
   );
 };
