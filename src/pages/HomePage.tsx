@@ -3,12 +3,8 @@ import { AuthContext } from "../auth";
 import { styles } from "../styles";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import Recipe from "../components/Recipe";
-
-type Ingredient = {
-  title: string;
-  amount: string;
-};
+import Recipe, { Ingredient } from "../components/Recipe";
+import { Link } from "react-router-dom";
 
 type RecipeDoc = {
   id: string;
@@ -43,13 +39,16 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className=" p-8 max-w-2xl mx-auto">
-      <div>
+    <div className="px-8 py-2 max-w-2xl mx-auto">
+      <Link className="underline font-semibold" to="/create">
+        Create
+      </Link>
+      <div className="mt-2">
         {recipes.map((recipe, index) => (
           <Recipe key={index} {...recipe} />
         ))}
       </div>
-      <button className={styles.button} onClick={logOut}>
+      <button className="underline font-semibold" onClick={logOut}>
         Logout
       </button>
     </div>

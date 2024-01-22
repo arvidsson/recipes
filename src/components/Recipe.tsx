@@ -1,8 +1,14 @@
 import React from "react";
 
-type Ingredient = {
+export type Ingredient = {
   title: string;
   amount: string;
+};
+
+export type RecipeModel = {
+  title: string;
+  ingredients: Ingredient[];
+  steps: string[];
 };
 
 type RecipeProps = {

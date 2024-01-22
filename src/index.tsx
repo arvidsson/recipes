@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext, AuthProvider, AuthRoute } from "./auth";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import CreateRecipePage from "./pages/CreateRecipePage";
 
 function App() {
   const { currentUser, loading } = useContext(AuthContext);
@@ -25,6 +26,14 @@ function App() {
         element={
           <AuthRoute>
             <HomePage />
+          </AuthRoute>
+        }
+      ></Route>
+      <Route
+        path="/create"
+        element={
+          <AuthRoute>
+            <CreateRecipePage />
           </AuthRoute>
         }
       ></Route>
