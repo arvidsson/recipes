@@ -20,15 +20,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
       <Route
         path="/"
-        element={
-          <AuthRoute>
-            <HomePage />
-          </AuthRoute>
-        }
-      ></Route>
+        element={loading ? null : currentUser ? <HomePage /> : <LoginPage />}
+      />
       <Route
         path="/create"
         element={
