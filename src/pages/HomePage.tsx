@@ -17,6 +17,7 @@ const HomePage = () => {
   const { currentUser } = useContext(AuthContext);
   const { logOut } = useContext(AuthContext);
   const [recipes, setRecipes] = useState<RecipeDoc[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!currentUser) return;
@@ -33,10 +34,13 @@ const HomePage = () => {
         });
       });
       setRecipes([...recipes]);
+      setLoading(false);
     };
 
     getRecipes();
   }, []);
+
+  if (loading) return null;
 
   return (
     <div className="px-8 py-8 max-w-2xl mx-auto">

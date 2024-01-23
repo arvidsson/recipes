@@ -67,11 +67,13 @@ export const AuthProvider = ({ children }: AuthProps) => {
 };
 
 export const AuthRoute = ({ children }: { children: JSX.Element }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, loading } = useContext(AuthContext);
   let location = useLocation();
 
+  if (loading) return null;
+
   if (!currentUser) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/" state={{ from: location }} replace />;
   }
 
   return children;

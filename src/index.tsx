@@ -9,30 +9,24 @@ import CreateRecipePage from "./pages/CreateRecipePage";
 
 function App() {
   const { currentUser, loading } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (currentUser) {
-      console.log("currentUser: ", currentUser);
-      navigate("/");
-    }
-  }, [currentUser, loading]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={loading ? null : currentUser ? <HomePage /> : <LoginPage />}
-      />
-      <Route
-        path="/create"
-        element={
-          <AuthRoute>
-            <CreateRecipePage />
-          </AuthRoute>
-        }
-      ></Route>
-    </Routes>
+    <div className="bg-yellow-50">
+      <Routes>
+        <Route
+          path="/"
+          element={loading ? null : currentUser ? <HomePage /> : <LoginPage />}
+        />
+        <Route
+          path="/create"
+          element={
+            <AuthRoute>
+              <CreateRecipePage />
+            </AuthRoute>
+          }
+        ></Route>
+      </Routes>
+    </div>
   );
 }
 
